@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCodigoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCodigoLabel_codigoPK_idCodigo}" for="codigoPK_idCodigo" />
+                    <h:inputText id="codigoPK_idCodigo" value="#{codigoController.selected.codigoPK.idCodigo}" title="#{bundle.EditCodigoTitle_codigoPK_idCodigo}" required="true" requiredMessage="#{bundle.EditCodigoRequiredMessage_codigoPK_idCodigo}"/>
+                    <h:outputLabel value="#{bundle.EditCodigoLabel_codigo}" for="codigo" />
+                    <h:inputText id="codigo" value="#{codigoController.selected.codigo}" title="#{bundle.EditCodigoTitle_codigo}" required="true" requiredMessage="#{bundle.EditCodigoRequiredMessage_codigo}"/>
+                    <h:outputLabel value="#{bundle.EditCodigoLabel_activo}" for="activo" />
+                    <h:inputText id="activo" value="#{codigoController.selected.activo}" title="#{bundle.EditCodigoTitle_activo}" required="true" requiredMessage="#{bundle.EditCodigoRequiredMessage_activo}"/>
+                    <h:outputLabel value="#{bundle.EditCodigoLabel_juego}" for="juego" />
+                    <h:selectOneMenu id="juego" value="#{codigoController.selected.juego}" title="#{bundle.EditCodigoTitle_juego}" required="true" requiredMessage="#{bundle.EditCodigoRequiredMessage_juego}">
+                        <f:selectItems value="#{juegoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{codigoController.update}" value="#{bundle.EditCodigoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCodigoViewLink}"/>
+                <br />
+                <h:commandLink action="#{codigoController.prepareList}" value="#{bundle.EditCodigoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCodigoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

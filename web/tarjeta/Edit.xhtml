@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTarjetaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTarjetaLabel_tarjetaPK_idTarjeta}" for="tarjetaPK_idTarjeta" />
+                    <h:inputText id="tarjetaPK_idTarjeta" value="#{tarjetaController.selected.tarjetaPK.idTarjeta}" title="#{bundle.EditTarjetaTitle_tarjetaPK_idTarjeta}" required="true" requiredMessage="#{bundle.EditTarjetaRequiredMessage_tarjetaPK_idTarjeta}"/>
+                    <h:outputLabel value="#{bundle.EditTarjetaLabel_numTarjeta}" for="numTarjeta" />
+                    <h:inputText id="numTarjeta" value="#{tarjetaController.selected.numTarjeta}" title="#{bundle.EditTarjetaTitle_numTarjeta}" required="true" requiredMessage="#{bundle.EditTarjetaRequiredMessage_numTarjeta}"/>
+                    <h:outputLabel value="#{bundle.EditTarjetaLabel_fechaExp}" for="fechaExp" />
+                    <h:inputText id="fechaExp" value="#{tarjetaController.selected.fechaExp}" title="#{bundle.EditTarjetaTitle_fechaExp}" required="true" requiredMessage="#{bundle.EditTarjetaRequiredMessage_fechaExp}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditTarjetaLabel_cvv}" for="cvv" />
+                    <h:inputText id="cvv" value="#{tarjetaController.selected.cvv}" title="#{bundle.EditTarjetaTitle_cvv}" required="true" requiredMessage="#{bundle.EditTarjetaRequiredMessage_cvv}"/>
+                    <h:outputLabel value="#{bundle.EditTarjetaLabel_usuario}" for="usuario" />
+                    <h:selectOneMenu id="usuario" value="#{tarjetaController.selected.usuario}" title="#{bundle.EditTarjetaTitle_usuario}" required="true" requiredMessage="#{bundle.EditTarjetaRequiredMessage_usuario}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{tarjetaController.update}" value="#{bundle.EditTarjetaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTarjetaViewLink}"/>
+                <br />
+                <h:commandLink action="#{tarjetaController.prepareList}" value="#{bundle.EditTarjetaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTarjetaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

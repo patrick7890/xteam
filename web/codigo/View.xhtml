@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCodigoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCodigoLabel_codigoPK_idCodigo}"/>
+                    <h:outputText value="#{codigoController.selected.codigoPK.idCodigo}" title="#{bundle.ViewCodigoTitle_codigoPK_idCodigo}"/>
+                    <h:outputText value="#{bundle.ViewCodigoLabel_codigo}"/>
+                    <h:outputText value="#{codigoController.selected.codigo}" title="#{bundle.ViewCodigoTitle_codigo}"/>
+                    <h:outputText value="#{bundle.ViewCodigoLabel_activo}"/>
+                    <h:outputText value="#{codigoController.selected.activo}" title="#{bundle.ViewCodigoTitle_activo}"/>
+                    <h:outputText value="#{bundle.ViewCodigoLabel_juego}"/>
+                    <h:outputText value="#{codigoController.selected.juego}" title="#{bundle.ViewCodigoTitle_juego}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{codigoController.destroyAndView}" value="#{bundle.ViewCodigoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCodigoEditLink}"/>
+                <br />
+                <h:commandLink action="#{codigoController.prepareCreate}" value="#{bundle.ViewCodigoCreateLink}" />
+                <br />
+                <h:commandLink action="#{codigoController.prepareList}" value="#{bundle.ViewCodigoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewCodigoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

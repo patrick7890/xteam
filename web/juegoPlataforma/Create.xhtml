@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateJuegoPlataformaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateJuegoPlataformaLabel_idJuegoPlataforma}" for="idJuegoPlataforma" />
+                    <h:inputText id="idJuegoPlataforma" value="#{juegoPlataformaController.selected.idJuegoPlataforma}" title="#{bundle.CreateJuegoPlataformaTitle_idJuegoPlataforma}" required="true" requiredMessage="#{bundle.CreateJuegoPlataformaRequiredMessage_idJuegoPlataforma}"/>
+                    <h:outputLabel value="#{bundle.CreateJuegoPlataformaLabel_juegoidJuego}" for="juegoidJuego" />
+                    <h:selectOneMenu id="juegoidJuego" value="#{juegoPlataformaController.selected.juegoidJuego}" title="#{bundle.CreateJuegoPlataformaTitle_juegoidJuego}" required="true" requiredMessage="#{bundle.CreateJuegoPlataformaRequiredMessage_juegoidJuego}">
+                        <f:selectItems value="#{juegoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateJuegoPlataformaLabel_plataformaidPlataforma}" for="plataformaidPlataforma" />
+                    <h:selectOneMenu id="plataformaidPlataforma" value="#{juegoPlataformaController.selected.plataformaidPlataforma}" title="#{bundle.CreateJuegoPlataformaTitle_plataformaidPlataforma}" required="true" requiredMessage="#{bundle.CreateJuegoPlataformaRequiredMessage_plataformaidPlataforma}">
+                        <f:selectItems value="#{plataformaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{juegoPlataformaController.create}" value="#{bundle.CreateJuegoPlataformaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{juegoPlataformaController.prepareList}" value="#{bundle.CreateJuegoPlataformaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateJuegoPlataformaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

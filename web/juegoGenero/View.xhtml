@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewJuegoGeneroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewJuegoGeneroLabel_idJuegoGenero}"/>
+                    <h:outputText value="#{juegoGeneroController.selected.idJuegoGenero}" title="#{bundle.ViewJuegoGeneroTitle_idJuegoGenero}"/>
+                    <h:outputText value="#{bundle.ViewJuegoGeneroLabel_generoidGenero}"/>
+                    <h:outputText value="#{juegoGeneroController.selected.generoidGenero}" title="#{bundle.ViewJuegoGeneroTitle_generoidGenero}"/>
+                    <h:outputText value="#{bundle.ViewJuegoGeneroLabel_juegoidJuego}"/>
+                    <h:outputText value="#{juegoGeneroController.selected.juegoidJuego}" title="#{bundle.ViewJuegoGeneroTitle_juegoidJuego}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{juegoGeneroController.destroyAndView}" value="#{bundle.ViewJuegoGeneroDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewJuegoGeneroEditLink}"/>
+                <br />
+                <h:commandLink action="#{juegoGeneroController.prepareCreate}" value="#{bundle.ViewJuegoGeneroCreateLink}" />
+                <br />
+                <h:commandLink action="#{juegoGeneroController.prepareList}" value="#{bundle.ViewJuegoGeneroShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewJuegoGeneroIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

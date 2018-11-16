@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditJuegoGeneroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditJuegoGeneroLabel_idJuegoGenero}" for="idJuegoGenero" />
+                    <h:inputText id="idJuegoGenero" value="#{juegoGeneroController.selected.idJuegoGenero}" title="#{bundle.EditJuegoGeneroTitle_idJuegoGenero}" required="true" requiredMessage="#{bundle.EditJuegoGeneroRequiredMessage_idJuegoGenero}"/>
+                    <h:outputLabel value="#{bundle.EditJuegoGeneroLabel_generoidGenero}" for="generoidGenero" />
+                    <h:selectOneMenu id="generoidGenero" value="#{juegoGeneroController.selected.generoidGenero}" title="#{bundle.EditJuegoGeneroTitle_generoidGenero}" required="true" requiredMessage="#{bundle.EditJuegoGeneroRequiredMessage_generoidGenero}">
+                        <f:selectItems value="#{generoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditJuegoGeneroLabel_juegoidJuego}" for="juegoidJuego" />
+                    <h:selectOneMenu id="juegoidJuego" value="#{juegoGeneroController.selected.juegoidJuego}" title="#{bundle.EditJuegoGeneroTitle_juegoidJuego}" required="true" requiredMessage="#{bundle.EditJuegoGeneroRequiredMessage_juegoidJuego}">
+                        <f:selectItems value="#{juegoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{juegoGeneroController.update}" value="#{bundle.EditJuegoGeneroSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditJuegoGeneroViewLink}"/>
+                <br />
+                <h:commandLink action="#{juegoGeneroController.prepareList}" value="#{bundle.EditJuegoGeneroShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditJuegoGeneroIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

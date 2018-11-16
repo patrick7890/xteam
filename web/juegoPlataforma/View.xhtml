@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewJuegoPlataformaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewJuegoPlataformaLabel_idJuegoPlataforma}"/>
+                    <h:outputText value="#{juegoPlataformaController.selected.idJuegoPlataforma}" title="#{bundle.ViewJuegoPlataformaTitle_idJuegoPlataforma}"/>
+                    <h:outputText value="#{bundle.ViewJuegoPlataformaLabel_juegoidJuego}"/>
+                    <h:outputText value="#{juegoPlataformaController.selected.juegoidJuego}" title="#{bundle.ViewJuegoPlataformaTitle_juegoidJuego}"/>
+                    <h:outputText value="#{bundle.ViewJuegoPlataformaLabel_plataformaidPlataforma}"/>
+                    <h:outputText value="#{juegoPlataformaController.selected.plataformaidPlataforma}" title="#{bundle.ViewJuegoPlataformaTitle_plataformaidPlataforma}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{juegoPlataformaController.destroyAndView}" value="#{bundle.ViewJuegoPlataformaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewJuegoPlataformaEditLink}"/>
+                <br />
+                <h:commandLink action="#{juegoPlataformaController.prepareCreate}" value="#{bundle.ViewJuegoPlataformaCreateLink}" />
+                <br />
+                <h:commandLink action="#{juegoPlataformaController.prepareList}" value="#{bundle.ViewJuegoPlataformaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewJuegoPlataformaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

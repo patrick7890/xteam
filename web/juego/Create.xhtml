@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateJuegoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateJuegoLabel_idJuego}" for="idJuego" />
+                    <h:inputText id="idJuego" value="#{juegoController.selected.idJuego}" title="#{bundle.CreateJuegoTitle_idJuego}" required="true" requiredMessage="#{bundle.CreateJuegoRequiredMessage_idJuego}"/>
+                    <h:outputLabel value="#{bundle.CreateJuegoLabel_nombreJuego}" for="nombreJuego" />
+                    <h:inputText id="nombreJuego" value="#{juegoController.selected.nombreJuego}" title="#{bundle.CreateJuegoTitle_nombreJuego}" required="true" requiredMessage="#{bundle.CreateJuegoRequiredMessage_nombreJuego}"/>
+                    <h:outputLabel value="#{bundle.CreateJuegoLabel_descripcionJuego}" for="descripcionJuego" />
+                    <h:inputText id="descripcionJuego" value="#{juegoController.selected.descripcionJuego}" title="#{bundle.CreateJuegoTitle_descripcionJuego}" required="true" requiredMessage="#{bundle.CreateJuegoRequiredMessage_descripcionJuego}"/>
+                    <h:outputLabel value="#{bundle.CreateJuegoLabel_precioJuego}" for="precioJuego" />
+                    <h:inputText id="precioJuego" value="#{juegoController.selected.precioJuego}" title="#{bundle.CreateJuegoTitle_precioJuego}" required="true" requiredMessage="#{bundle.CreateJuegoRequiredMessage_precioJuego}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{juegoController.create}" value="#{bundle.CreateJuegoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{juegoController.prepareList}" value="#{bundle.CreateJuegoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateJuegoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

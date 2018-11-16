@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTarjetaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTarjetaLabel_tarjetaPK_idTarjeta}" for="tarjetaPK_idTarjeta" />
+                    <h:inputText id="tarjetaPK_idTarjeta" value="#{tarjetaController.selected.tarjetaPK.idTarjeta}" title="#{bundle.CreateTarjetaTitle_tarjetaPK_idTarjeta}" required="true" requiredMessage="#{bundle.CreateTarjetaRequiredMessage_tarjetaPK_idTarjeta}"/>
+                    <h:outputLabel value="#{bundle.CreateTarjetaLabel_numTarjeta}" for="numTarjeta" />
+                    <h:inputText id="numTarjeta" value="#{tarjetaController.selected.numTarjeta}" title="#{bundle.CreateTarjetaTitle_numTarjeta}" required="true" requiredMessage="#{bundle.CreateTarjetaRequiredMessage_numTarjeta}"/>
+                    <h:outputLabel value="#{bundle.CreateTarjetaLabel_fechaExp}" for="fechaExp" />
+                    <h:inputText id="fechaExp" value="#{tarjetaController.selected.fechaExp}" title="#{bundle.CreateTarjetaTitle_fechaExp}" required="true" requiredMessage="#{bundle.CreateTarjetaRequiredMessage_fechaExp}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateTarjetaLabel_cvv}" for="cvv" />
+                    <h:inputText id="cvv" value="#{tarjetaController.selected.cvv}" title="#{bundle.CreateTarjetaTitle_cvv}" required="true" requiredMessage="#{bundle.CreateTarjetaRequiredMessage_cvv}"/>
+                    <h:outputLabel value="#{bundle.CreateTarjetaLabel_usuario}" for="usuario" />
+                    <h:selectOneMenu id="usuario" value="#{tarjetaController.selected.usuario}" title="#{bundle.CreateTarjetaTitle_usuario}" required="true" requiredMessage="#{bundle.CreateTarjetaRequiredMessage_usuario}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tarjetaController.create}" value="#{bundle.CreateTarjetaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tarjetaController.prepareList}" value="#{bundle.CreateTarjetaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTarjetaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
