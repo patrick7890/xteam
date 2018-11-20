@@ -7,6 +7,7 @@
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
         <h:outputStylesheet library="css" name="jsfcrud.css"/>
     </h:head>
 
@@ -15,7 +16,11 @@
             <ui:insert name="title">Default Title</ui:insert>
         </h1>
         <p>
-            <ui:insert name="body">Default Body</ui:insert>
+            <div class="container text-center" >
+                <div class="row justify-content-md-center">
+                    <ui:insert name="body"></ui:insert>
+                </div>
+            </div>
         </p>
     </h:body>
 
