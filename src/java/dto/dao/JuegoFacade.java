@@ -6,9 +6,11 @@
 package dto.dao;
 
 import dto.entidad.Juego;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +29,11 @@ public class JuegoFacade extends AbstractFacade<Juego> {
 
     public JuegoFacade() {
         super(Juego.class);
+    }
+    
+    public List<String> listarJuegos() {
+        Query q = em.createNamedQuery("Juego.ListarJuegosPG");
+        return q.getResultList();
     }
     
 }

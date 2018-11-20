@@ -32,7 +32,14 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Juego.findAll", query = "SELECT j FROM Juego j")
-    , @NamedQuery(name = "Juego.findByIdJuego", query = "SELECT j FROM Juego j WHERE j.idJuego = :idJuego")
+    , @NamedQuery(name = "Juego.findByIdJuego", query = "SELECT j.nombreJuego,j.descripcionJuego,function('GROUP_CONCAT', function('DISTINCT', p.plataforma  )),function('GROUP_CONCAT', function('DISTINCT', g.genero )),j.precioJuego   FROM"
+            + "	Juego j"
+            + "	JOIN JuegoGenero AS jg ON jg.Juego_idJuego = j.idJuego\n"
+            + "	JOIN JuegoPlataforma AS jp ON jp.Juego_idJuego = j.idJuego\n"
+            + "	INNER JOIN Plataforma AS p ON jp.Plataforma_idPlataforma = p.idPlataforma\n"
+            + "	INNER JOIN Genero AS g ON jg.Genero_idGenero = g.idGenero \n"
+            + "GROUP BY\n"
+            + "	j.nombreJuego")
     , @NamedQuery(name = "Juego.findByNombreJuego", query = "SELECT j FROM Juego j WHERE j.nombreJuego = :nombreJuego")
     , @NamedQuery(name = "Juego.findByDescripcionJuego", query = "SELECT j FROM Juego j WHERE j.descripcionJuego = :descripcionJuego")
     , @NamedQuery(name = "Juego.findByPrecioJuego", query = "SELECT j FROM Juego j WHERE j.precioJuego = :precioJuego")})
@@ -162,5 +169,5 @@ public class Juego implements Serializable {
     public String toString() {
         return "dto.entidad.Juego[ idJuego=" + idJuego + " ]";
     }
-    
+
 }

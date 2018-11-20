@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -11,16 +12,14 @@
         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                <p:growl />
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.EditCompraLabel_idCompra}" for="idCompra" />
                     <h:inputText id="idCompra" value="#{compraController.selected.idCompra}" title="#{bundle.EditCompraTitle_idCompra}" required="true" requiredMessage="#{bundle.EditCompraRequiredMessage_idCompra}"/>
                     <h:outputLabel value="#{bundle.EditCompraLabel_fechaCompra}" for="fechaCompra" />
-                    <h:inputText id="fechaCompra" value="#{compraController.selected.fechaCompra}" title="#{bundle.EditCompraTitle_fechaCompra}" required="true" requiredMessage="#{bundle.EditCompraRequiredMessage_fechaCompra}">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
+                    <p:calendar id="fechaCompra" value="#{compraController.selected.fechaCompra}" title="#{bundle.CreateCompraTitle_fechaCompra}" required="true" requiredMessage="#{bundle.CreateCompraRequiredMessage_fechaCompra}"/>
                     <h:outputLabel value="#{bundle.EditCompraLabel_totalCompra}" for="totalCompra" />
                     <h:inputText id="totalCompra" value="#{compraController.selected.totalCompra}" title="#{bundle.EditCompraTitle_totalCompra}" required="true" requiredMessage="#{bundle.EditCompraRequiredMessage_totalCompra}"/>
                     <h:outputLabel value="#{bundle.EditCompraLabel_usuarioidUsuario}" for="usuarioidUsuario" />

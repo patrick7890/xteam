@@ -136,7 +136,7 @@ public class Codigo implements Serializable {
 
     @Override
     public String toString() {
-        return "dto.entidad.Codigo[ codigoPK=" + codigoPK + " ]";
+        return "" + juego.getNombreJuego();
     }
-    
+
 }
